@@ -34,3 +34,4 @@ class BaseConfig():
         settings.WIDTH = data['screen']['width']
         settings.HEIGHT = data['screen']['height']
         settings.FPS = data['fps']
+        settings.FULLSCREEN = data['fullscreen']

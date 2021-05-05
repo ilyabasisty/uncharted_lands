@@ -1,8 +1,9 @@
 {
   "title": "Uncharted lands",
   "screen": {
-    "width": 1000,
-    "height": 800
+    "width": 1600,
+    "height": 900
   },
-  "fps": 30
+  "fps": 30,
+  "fullscreen": false
 }

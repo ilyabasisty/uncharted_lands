@@ -8,6 +8,11 @@ TITLE = None
 WIDTH = None
 HEIGHT = None
 FPS = None
+FULLSCREEN = None
+
+
+# pygame params
+SCREEN = None
 
 
 # json params
