@@ -1,4 +1,5 @@
 import config.settings.base_settings as settings
+from config.config_manage import check_debug
 import pygame
 
 
@@ -7,8 +8,7 @@ class Front:
     @staticmethod
     def front_init():
         pygame.init()
-        if settings.DEBUG:
-            print('-- Front init --')
+        check_debug('Front init', 2)
         if settings.FULLSCREEN:
             settings.SCREEN = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT), pygame.FULLSCREEN)
         else:
@@ -17,14 +17,12 @@ class Front:
 
     @staticmethod
     def game_exit():
-        if settings.DEBUG:
-            print('--- Main game loop is over ---')
+        check_debug('Main game loop is over', 3)
         settings.MAIN_LOOP = False
         exit()
 
     def game_loop(self):
-        if settings.DEBUG:
-            print('--- Main game loop is start ---')
+        check_debug('Main game loop is start', 3)
         while settings.MAIN_LOOP:
             for ev in pygame.event.get():
                 if ev.type == pygame.QUIT:

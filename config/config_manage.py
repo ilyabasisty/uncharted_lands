@@ -2,11 +2,15 @@ import config.settings.base_settings as settings
 import json
 
 
+def check_debug(massage, status=1):
+    if settings.DEBUG:
+        print('-'*status + ' ' + massage + ' ' + '-'*status)
+
+
 class BaseConfig():
 
     def config_init(self):
-        if settings.DEBUG:
-            print('-- Config init --')
+        check_debug('Config init', 2)
         settings.WINDOW_DATA = self.setting_load(settings.WINDOW_JSON_PARAMS)
 
         self.set_window_params(settings.WINDOW_DATA)
@@ -16,16 +20,14 @@ class BaseConfig():
     def setting_load(url):
         with open(url, 'r') as read:
             save = json.load(read)
-        if settings.DEBUG:
-            print('- setting load -')
+        check_debug('setting load', 1)
         return save
 
     @staticmethod
     def setting_dump(url, data):
         with open(url, 'w') as write:
             json.dump(data, write)
-        if settings.DEBUG:
-            print('- setting dump -')
+        check_debug('setting dump', 1)
 
 # params parse methods
     @staticmethod
