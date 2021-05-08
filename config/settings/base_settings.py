@@ -3,6 +3,10 @@ DEBUG = True
 MAIN_LOOP = True
 
 
+# loops
+MENU_LOOP = True
+
+
 # window params
 TITLE = None
 WIDTH = None
