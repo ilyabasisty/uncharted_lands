@@ -19,9 +19,16 @@ class Menu:
     def menu_exit():
         settings.MENU_LOOP = False
         settings.MAIN_LOOP = False
+    
+    @staticmethod
+    def to_setting():
+        settings.SETTINGS_LOOP = True
+        settings.MENU_LOOP = False
 
     def menu_loop(self):
-        exit_button = Button((100,100,100), settings.WIDTH/2-100, settings.HEIGHT/2-20, 200, 40, 'Выйти')
+        setting_button = Button((100,100,100), settings.WIDTH/2-100, settings.HEIGHT/2-50, 240, 50, 'Настройки')
+        exit_button = Button((100,100,100), settings.WIDTH/2-100, settings.HEIGHT/2+30, 240, 50, 'Выйти')
+
         check_debug('Menu loop is start', 1)
         while settings.MENU_LOOP:
             for ev in pygame.event.get():
@@ -34,11 +41,13 @@ class Menu:
                 if ev.type == pygame.MOUSEBUTTONDOWN:
                     if exit_button.check(mouse):
                         self.menu_exit()
+                    if setting_button.check(mouse):
+                        self.to_setting()
 
-            
 
             settings.SCREEN.fill((150,150,150))
             exit_button.draw(settings.SCREEN)
+            setting_button.draw(settings.SCREEN)
             pygame.display.update()
             self.clock.tick(settings.FPS)
         

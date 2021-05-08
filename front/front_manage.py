@@ -3,6 +3,7 @@ from config.config_manage import check_debug
 import pygame
 
 from front.menu.menu import Menu
+from front.setting.setting import Setting
 
 
 class Front:
@@ -27,6 +28,8 @@ class Front:
     def game_loop(self):
         menu = Menu()
         menu.menu_init()
+        setting = Setting()
+        setting.setting_init()
 
         check_debug('Main game loop is start', 3)
         while settings.MAIN_LOOP:
@@ -39,6 +42,7 @@ class Front:
                         self.game_exit()
             
             menu.menu_loop()
+            setting.setting_loop()
             settings.SCREEN.fill((100,100,100))
             pygame.display.update()
             self.clock.tick(settings.FPS)

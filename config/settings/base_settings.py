@@ -5,6 +5,7 @@ MAIN_LOOP = True
 
 # loops
 MENU_LOOP = True
+SETTINGS_LOOP = False
 
 
 # window params
