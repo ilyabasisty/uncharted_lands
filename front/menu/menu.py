@@ -8,12 +8,15 @@ from back.base.button import Button
 class Menu:
     clock = pygame.time.Clock()
 
+    def __init__(self):
+        self.setting_button = None
+        self.exit_button = None
+
     @staticmethod
     def menu_init():
         pygame.init()
         check_debug('Menu init', 1)
         settings.SCREEN.fill((150,150,150))
-        pygame.display.set_caption(settings.TITLE + ": Menu")
     
     @staticmethod
     def menu_exit():
@@ -24,12 +27,15 @@ class Menu:
     def to_setting():
         settings.SETTINGS_LOOP = True
         settings.MENU_LOOP = False
+    
+    def update(self):
+        self.setting_button = Button((100,100,100), settings.WIDTH/2-100, settings.HEIGHT/2-50, 240, 50, 'Настройки')
+        self.exit_button = Button((100,100,100), settings.WIDTH/2-100, settings.HEIGHT/2+30, 240, 50, 'Выйти')
 
     def menu_loop(self):
-        setting_button = Button((100,100,100), settings.WIDTH/2-100, settings.HEIGHT/2-50, 240, 50, 'Настройки')
-        exit_button = Button((100,100,100), settings.WIDTH/2-100, settings.HEIGHT/2+30, 240, 50, 'Выйти')
-
+        self.update()
         check_debug('Menu loop is start', 1)
+        pygame.display.set_caption(settings.TITLE + ": Menu")
         while settings.MENU_LOOP:
             for ev in pygame.event.get():
                 mouse = pygame.mouse.get_pos()
@@ -39,15 +45,16 @@ class Menu:
                     if ev.key == pygame.K_ESCAPE:
                         self.menu_exit()
                 if ev.type == pygame.MOUSEBUTTONDOWN:
-                    if exit_button.check(mouse):
+                    if self.exit_button.check(mouse):
                         self.menu_exit()
-                    if setting_button.check(mouse):
+                    if self.setting_button.check(mouse):
                         self.to_setting()
 
 
             settings.SCREEN.fill((150,150,150))
-            exit_button.draw(settings.SCREEN)
-            setting_button.draw(settings.SCREEN)
+            self.exit_button.draw(settings.SCREEN)
+            self.setting_button.draw(settings.SCREEN)
+            
             pygame.display.update()
             self.clock.tick(settings.FPS)
         
