@@ -7,6 +7,8 @@ MAIN_LOOP = True
 MENU_LOOP = True
 SETTINGS_LOOP = False
 
+INFO_LOOP = False
+
 
 # window params
 TITLE = None
@@ -35,5 +37,6 @@ CONS_COLOR = {
     'INIT': '\033[0;32m',
     'ALERT': '\033[1;31m',
     'SETTING': '\033[2;33m',
-    'CORE': '\033[1;35m'
+    'CORE': '\033[1;35m',
+    'EVENT': '\033[1;36m'
 }

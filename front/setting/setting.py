@@ -1,5 +1,6 @@
 import config.settings.base_settings as settings
 from config.config_manage import check_debug
+from front.other.choice import add_choice
 import pygame
 
 from back.base.button import Button
@@ -10,7 +11,7 @@ class Setting():
     def __init__(self):
         pygame.init()
         check_debug('Setting init', 'INIT', 1)
-        settings.SCREEN.fill((120,120,120))
+        settings.SCREEN.fill((150,150,150))
         self.clock = pygame.time.Clock()
 
         self.back_button = None
@@ -31,13 +32,12 @@ class Setting():
             settings.SCREEN = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT))
 
     def update(self):
-        self.back_button = Button((100,100,100), settings.WIDTH/2-100, settings.HEIGHT-100, 200, 40, 'Назад')
-        self.fullscreen_button = Button((100,100,100), 50, 50, 200, 40, 'Полный экран')
+        self.back_button = Button((100,100,100), settings.WIDTH/2-100, settings.HEIGHT-100, 200, 50, 'Назад')
+        self.fullscreen_button = Button((100,100,100), 50, 50, 300, 50, 'Полный экран')
 
     def setting_loop(self):
         self.update()
         check_debug('Setting loop is start', 'BASE', 1)
-        pygame.display.set_caption(settings.TITLE + ": Setting")
         while settings.SETTINGS_LOOP:
             for ev in pygame.event.get():
                 mouse = pygame.mouse.get_pos()
@@ -49,13 +49,20 @@ class Setting():
                 if ev.type == pygame.MOUSEBUTTONDOWN:
                     if self.back_button.check(mouse):
                         self.to_menu()
-                    
                     if self.fullscreen_button.check(mouse):
-                        self.switch_fullscreen()
+                        if add_choice('Подтвердить изменения ?', 600):
+                            self.switch_fullscreen()
+                            self.update()
+                if ev.type == pygame.MOUSEMOTION:
+                    if self.back_button.check(mouse):
+                        self.back_button = Button((120,120,120), settings.WIDTH/2-100, settings.HEIGHT-100, 200, 50, 'Назад')
+                    elif self.fullscreen_button.check(mouse):
+                        self.fullscreen_button = Button((120,120,120), 50, 50, 300, 50, 'Полный экран')
+                    else:
                         self.update()
             
 
-            settings.SCREEN.fill((120,120,120))
+            settings.SCREEN.fill((150,150,150))
             self.back_button.draw(settings.SCREEN)
             self.fullscreen_button.draw(settings.SCREEN)
 

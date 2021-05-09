@@ -1,5 +1,6 @@
 import config.settings.base_settings as settings
 from config.config_manage import check_debug
+from front.other.choice import add_choice
 import pygame
 
 from back.base.button import Button
@@ -34,7 +35,6 @@ class Menu():
     def menu_loop(self):
         self.update()
         check_debug('Menu loop is start', 'BASE', 1)
-        pygame.display.set_caption(settings.TITLE + ": Menu")
         while settings.MENU_LOOP:
             for ev in pygame.event.get():
                 mouse = pygame.mouse.get_pos()
@@ -48,7 +48,13 @@ class Menu():
                         self.menu_exit()
                     if self.setting_button.check(mouse):
                         self.to_setting()
-
+                if ev.type == pygame.MOUSEMOTION:
+                    if self.exit_button.check(mouse):
+                        self.exit_button = Button((120,120,120), settings.WIDTH/2-100, settings.HEIGHT/2+30, 240, 50, 'Выйти')
+                    elif self.setting_button.check(mouse):
+                        self.setting_button = Button((120,120,120), settings.WIDTH/2-100, settings.HEIGHT/2-50, 240, 50, 'Настройки')
+                    else:
+                        self.update()
 
             settings.SCREEN.fill((150,150,150))
             self.exit_button.draw(settings.SCREEN)
