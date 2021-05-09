@@ -6,6 +6,4 @@ if __name__ == '__main__':
     config = BaseConfig()
     front = Front()
 
-    config.config_init()
-    front.front_init()
     front.game_loop()

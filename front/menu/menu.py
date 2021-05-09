@@ -5,23 +5,22 @@ import pygame
 from back.base.button import Button
 
 
-class Menu:
-    clock = pygame.time.Clock()
+class Menu():
 
     def __init__(self):
+        pygame.init()
+        check_debug('Menu init', 'INIT', 1)
+        settings.SCREEN.fill((150,150,150))
+        self.clock = pygame.time.Clock()
+
         self.setting_button = None
         self.exit_button = None
-
-    @staticmethod
-    def menu_init():
-        pygame.init()
-        check_debug('Menu init', 1)
-        settings.SCREEN.fill((150,150,150))
     
     @staticmethod
     def menu_exit():
         settings.MENU_LOOP = False
         settings.MAIN_LOOP = False
+        check_debug('GAME EXIT !', 'ALERT')
     
     @staticmethod
     def to_setting():
@@ -34,7 +33,7 @@ class Menu:
 
     def menu_loop(self):
         self.update()
-        check_debug('Menu loop is start', 1)
+        check_debug('Menu loop is start', 'BASE', 1)
         pygame.display.set_caption(settings.TITLE + ": Menu")
         while settings.MENU_LOOP:
             for ev in pygame.event.get():
@@ -58,4 +57,4 @@ class Menu:
             pygame.display.update()
             self.clock.tick(settings.FPS)
         
-        check_debug('Menu loop is over', 1)
+        check_debug('Menu loop is over', 'BASE', 1)

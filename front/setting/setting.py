@@ -5,18 +5,16 @@ import pygame
 from back.base.button import Button
 
 
-class Setting:
-    clock = pygame.time.Clock()
+class Setting():
 
     def __init__(self):
-        self.back_button = None
-        self.fullscreen_button = None
-
-    @staticmethod
-    def setting_init():
         pygame.init()
-        check_debug('Setting init', 1)
+        check_debug('Setting init', 'INIT', 1)
         settings.SCREEN.fill((120,120,120))
+        self.clock = pygame.time.Clock()
+
+        self.back_button = None
+        self.fullscreen_button = None    
     
     @staticmethod
     def to_menu():
@@ -26,6 +24,7 @@ class Setting:
     @staticmethod
     def switch_fullscreen():
         settings.FULLSCREEN = not settings.FULLSCREEN
+        check_debug(f'Set fullscreen: {settings.FULLSCREEN}', 'SETTING')
         if settings.FULLSCREEN:
             settings.SCREEN = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT), pygame.FULLSCREEN)
         else:
@@ -37,7 +36,7 @@ class Setting:
 
     def setting_loop(self):
         self.update()
-        check_debug('Setting loop is start', 1)
+        check_debug('Setting loop is start', 'BASE', 1)
         pygame.display.set_caption(settings.TITLE + ": Setting")
         while settings.SETTINGS_LOOP:
             for ev in pygame.event.get():
@@ -63,4 +62,4 @@ class Setting:
             pygame.display.update()
             self.clock.tick(settings.FPS)
         
-        check_debug('Setting loop is over', 1)
+        check_debug('Setting loop is over', 'BASE', 1)
