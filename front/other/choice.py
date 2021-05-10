@@ -6,10 +6,10 @@ from back.base.button import Button
 
 
 def add_choice(massage, width=500, height=200):
-    settings.INFO_LOOP = True
+    settings.CHOICE_LOOP = True
     info = Choice((110,110,110), width=width, height=height, text=massage)
     info.draw(settings.SCREEN)
-    return info.info_loop()
+    return info.choice_loop()
 
 
 class Choice():
@@ -29,7 +29,7 @@ class Choice():
     
     @staticmethod
     def choice_exit():
-        settings.INFO_LOOP = False
+        settings.CHOICE_LOOP = False
     
     def update(self):
         self.apply_button = Button((100,100,100), settings.WIDTH/2-240, settings.HEIGHT/2 + self.height/2 - 60, 220, 50, 'Применить')
@@ -43,10 +43,10 @@ class Choice():
             text = font.render(self.text, 1, (0,0,0))
             win.blit(text, (settings.WIDTH/2 - text.get_width()/2, settings.HEIGHT/2 - self.height/2 + 20))
 
-    def info_loop(self):
+    def choice_loop(self):
         self.update()
         check_debug('Info loop is start', 'EVENT')
-        while settings.INFO_LOOP:
+        while settings.CHOICE_LOOP:
             for ev in pygame.event.get():
                 mouse = pygame.mouse.get_pos()
                 if ev.type == pygame.QUIT:

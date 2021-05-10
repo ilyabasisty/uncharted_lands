@@ -7,7 +7,7 @@ MAIN_LOOP = True
 MENU_LOOP = True
 SETTINGS_LOOP = False
 
-INFO_LOOP = False
+CHOICE_LOOP = False
 
 
 # window params
