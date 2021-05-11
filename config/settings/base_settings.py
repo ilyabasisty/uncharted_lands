@@ -8,6 +8,7 @@ MENU_LOOP = True
 SETTINGS_LOOP = False
 
 CHOICE_LOOP = False
+INFO_LOOP = False
 
 
 # window params
@@ -20,10 +21,6 @@ FULLSCREEN = None
 
 # pygame params
 SCREEN = None
-
-
-# json params
-WINDOW_JSON_PARAMS = 'config/json_base/main_game_params.json'
 
 
 # data

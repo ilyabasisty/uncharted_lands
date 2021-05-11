@@ -5,14 +5,14 @@ import pygame
 from back.base.button import Button
 
 
-def add_choice(massage, width=500, height=200):
+def add_choice(massage, width=500, height=200, info_link=None):
     settings.CHOICE_LOOP = True
-    info = Choice((110,110,110), width=width, height=height, text=massage)
-    info.draw(settings.SCREEN)
-    return info.choice_loop()
+    choice = Choice((110,110,110), width=width, height=height, text=massage)
+    choice.draw(settings.SCREEN)
+    return choice.choice_loop()
 
 
-class Choice():
+class Choice:
 
     def __init__(self, color, width, height, text=''):
         pygame.init()
@@ -21,9 +21,8 @@ class Choice():
         self.width = width
         self.height = height
         self.text = text
-        self.color= color
+        self.color = color
 
-        self.canvas = None
         self.apply_button = None
         self.cancel_button = None
     
@@ -45,7 +44,7 @@ class Choice():
 
     def choice_loop(self):
         self.update()
-        check_debug('Info loop is start', 'EVENT')
+        check_debug('Choice loop', 'EVENT')
         while settings.CHOICE_LOOP:
             for ev in pygame.event.get():
                 mouse = pygame.mouse.get_pos()
@@ -72,11 +71,8 @@ class Choice():
                     else:
                         self.update()
 
-
             self.apply_button.draw(settings.SCREEN)
             self.cancel_button.draw(settings.SCREEN)
             
             pygame.display.update()
             self.clock.tick(settings.FPS)
-        
-        check_debug('Info loop is over', 'EVENT')
