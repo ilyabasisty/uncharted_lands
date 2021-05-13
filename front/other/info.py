@@ -58,9 +58,7 @@ class Info:
                     if self.apply_button.check(mouse):
                         self.info_exit()
                 if ev.type == pygame.MOUSEMOTION:
-                    if self.apply_button.check(mouse):
-                        self.apply_button = Button((120, 120, 120), settings.WIDTH / 2 - 110,
-                                                   settings.HEIGHT / 2 + self.height / 2 - 60, 220, 50, 'Продолжить')
+                    if self.apply_button.check(mouse):self.apply_button.color = (120,120,120)
                     else:
                         self.update()
 

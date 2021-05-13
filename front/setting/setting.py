@@ -54,10 +54,8 @@ class Setting():
                             self.switch_fullscreen()
                             self.update()
                 if ev.type == pygame.MOUSEMOTION:
-                    if self.back_button.check(mouse):
-                        self.back_button = Button((120,120,120), settings.WIDTH/2-100, settings.HEIGHT-100, 200, 50, 'Назад')
-                    elif self.fullscreen_button.check(mouse):
-                        self.fullscreen_button = Button((120,120,120), 50, 50, 300, 50, 'Полный экран')
+                    if self.back_button.check(mouse):self.back_button.color = (120,120,120)
+                    elif self.fullscreen_button.check(mouse):self.fullscreen_button.color = (120,120,120)
                     else:
                         self.update()
             

@@ -71,18 +71,10 @@ class Menu():
                     if self.info_game_button.check(mouse):
                         add_info(get_json_text(json_path.MENU_GAME_INFO), 900)
                 if ev.type == pygame.MOUSEMOTION:
-                    if self.exit_button.check(mouse):
-                        self.exit_button = Button((120,120,120),
-                                                  settings.WIDTH/2-100, settings.HEIGHT/2+30, 240, 50, 'Выйти')
-                    elif self.setting_button.check(mouse):
-                        self.setting_button = Button((120,120,120),
-                                                     settings.WIDTH/2-100, settings.HEIGHT/2-50, 240, 50, 'Настройки')
-                    elif self.info_game_button.check(mouse):
-                        self.info_game_button = Button((120, 120, 120),
-                                                       settings.WIDTH - 60, settings.HEIGHT - 60, 50, 50, '!')
-                    elif self.new_game_button.check(mouse):
-                        self.new_game_button = Button((120, 120, 120),
-                                                     settings.WIDTH / 2 - 100, settings.HEIGHT / 2 - 110, 240, 50, 'Новая игра')
+                    if self.exit_button.check(mouse):self.exit_button.color = (120,120,120)
+                    elif self.setting_button.check(mouse):self.setting_button.color = (120,120,120)
+                    elif self.info_game_button.check(mouse):self.info_game_button.color = (120,120,120)
+                    elif self.new_game_button.check(mouse):self.new_game_button.color = (120,120,120)
                     else:
                         self.update()
 

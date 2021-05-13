@@ -42,9 +42,7 @@ class PreGame():
                         if add_choice('Выйти в меню ?', 500):
                             self.pre_game_exit()
                 if ev.type == pygame.MOUSEMOTION:
-                    if self.exit_button.check(mouse):
-                        self.exit_button = Button((120, 120, 120),
-                                                  settings.WIDTH - 250, settings.HEIGHT - 60, 240, 50, 'Выйти')
+                    if self.exit_button.check(mouse):self.exit_button.color = (120,120,120)
                     else:
                         self.update()
 
