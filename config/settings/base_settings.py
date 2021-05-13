@@ -6,6 +6,7 @@ MAIN_LOOP = True
 # loops
 MENU_LOOP = True
 SETTINGS_LOOP = False
+PRE_GAME_LOOP = False
 
 CHOICE_LOOP = False
 INFO_LOOP = False

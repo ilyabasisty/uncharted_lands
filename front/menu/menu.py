@@ -17,6 +17,7 @@ class Menu():
         settings.SCREEN.fill((150,150,150))
         self.clock = pygame.time.Clock()
 
+        self.new_game_button = None
         self.setting_button = None
         self.exit_button = None
 
@@ -32,11 +33,21 @@ class Menu():
     def to_setting():
         settings.SETTINGS_LOOP = True
         settings.MENU_LOOP = False
+
+    @staticmethod
+    def to_new_game():
+        settings.PRE_GAME_LOOP = True
+        settings.MENU_LOOP = False
     
     def update(self):
-        self.setting_button = Button((100,100,100), settings.WIDTH/2-100, settings.HEIGHT/2-50, 240, 50, 'Настройки')
-        self.exit_button = Button((100,100,100), settings.WIDTH/2-100, settings.HEIGHT/2+30, 240, 50, 'Выйти')
-        self.info_game_button = Button((100, 100, 100), settings.WIDTH - 60, settings.HEIGHT - 60, 50, 50, '!')
+        self.new_game_button = Button((100, 100, 100),
+                                     settings.WIDTH / 2 - 100, settings.HEIGHT / 2 - 110, 240, 50,'Новая игра')
+        self.setting_button = Button((100,100,100),
+                                     settings.WIDTH/2-100, settings.HEIGHT/2-50, 240, 50, 'Настройки')
+        self.exit_button = Button((100,100,100),
+                                  settings.WIDTH/2-100, settings.HEIGHT/2+30, 240, 50, 'Выйти')
+        self.info_game_button = Button((100, 100, 100),
+                                       settings.WIDTH - 60, settings.HEIGHT - 60, 50, 50, '!')
 
     def menu_loop(self):
         self.update()
@@ -55,19 +66,28 @@ class Menu():
                             self.menu_exit()
                     if self.setting_button.check(mouse):
                         self.to_setting()
+                    if self.new_game_button.check(mouse):
+                        self.to_new_game()
                     if self.info_game_button.check(mouse):
                         add_info(get_json_text(json_path.MENU_GAME_INFO), 900)
                 if ev.type == pygame.MOUSEMOTION:
                     if self.exit_button.check(mouse):
-                        self.exit_button = Button((120,120,120), settings.WIDTH/2-100, settings.HEIGHT/2+30, 240, 50, 'Выйти')
+                        self.exit_button = Button((120,120,120),
+                                                  settings.WIDTH/2-100, settings.HEIGHT/2+30, 240, 50, 'Выйти')
                     elif self.setting_button.check(mouse):
-                        self.setting_button = Button((120,120,120), settings.WIDTH/2-100, settings.HEIGHT/2-50, 240, 50, 'Настройки')
+                        self.setting_button = Button((120,120,120),
+                                                     settings.WIDTH/2-100, settings.HEIGHT/2-50, 240, 50, 'Настройки')
                     elif self.info_game_button.check(mouse):
-                        self.info_game_button = Button((120, 120, 120), settings.WIDTH - 60, settings.HEIGHT - 60, 50, 50, '!')
+                        self.info_game_button = Button((120, 120, 120),
+                                                       settings.WIDTH - 60, settings.HEIGHT - 60, 50, 50, '!')
+                    elif self.new_game_button.check(mouse):
+                        self.new_game_button = Button((120, 120, 120),
+                                                     settings.WIDTH / 2 - 100, settings.HEIGHT / 2 - 110, 240, 50, 'Новая игра')
                     else:
                         self.update()
 
             settings.SCREEN.fill((150,150,150))
+            self.new_game_button.draw(settings.SCREEN)
             self.exit_button.draw(settings.SCREEN)
             self.setting_button.draw(settings.SCREEN)
             self.info_game_button.draw(settings.SCREEN)
