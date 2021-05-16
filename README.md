@@ -43,6 +43,40 @@
     ```
 - Запускаем ```main.py```
 - Готово
+## Работа с проектом.
+Информация для тех, кто имеет желание и время вкладываться в развитие проекта.
+### Создание своей ветки
+- Создаём свою ветку.
+  ```bash
+    git branch your_name
+  ```
+- Переключаемся в неё.
+  ```bash
+    git checkout your_name
+  ```
+- **Дальнейшие ```push``` и ```pull``` делаем ТОЛЬКО в неё !**
+### Работа с веткой
+- Загружаем изменения из основной ветки.
+  ```bash
+    git pull origin dev
+  ```
+- Загружаем изменения из своей ветки.
+  ```bash
+    git pull origin your_name
+  ```
+- Выгружаем изменения в свою ветку.
+  ```bash
+    git push origin your_name
+  ```
+### Выгрузка изменений в основную ветку.
+- После внесения изменений в свою ветку создаём ```Pull requests```:
+  - Переходим в [Pull requests](https://github.com/woodenowl/uncharted_lands/pulls).
+  - Нажимаем ```New pull request```.
+  - Выбираем свою ветку.
+  - Пишем комментарий по проделанной работе и указываем меня в ```Reviewers```.
+  - Нажимаем ```Create pull request```.
+- Ожидаем проверки изменений (может уйти от нескольких часов до суток. Зависит от свободного времени).
+- После создания ```Pull requests``` и до его подтверждения не делаем ```push``` в эту ветку.
 
 ## Стек технологий
 **Функционал**
@@ -55,8 +89,9 @@ pygame
 
 
 ## Контакты
+- [Telegram](https://t.me/snowfox_x)
 - mail: il.nordsky@gmail.com
-- vk: [Ilya Basisty](https://vk.com/ilnord)
+- [vk](https://vk.com/ilnord)
 
 ## Лицензия
 [BSD 3-Clause](https://choosealicense.com/licenses/bsd-3-clause/)
