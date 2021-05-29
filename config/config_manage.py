@@ -43,6 +43,12 @@ class BaseConfig():
         settings.FPS = data['fps']
         settings.FULLSCREEN = data['fullscreen']
 
+    @staticmethod
+    def set_preset_params(data):
+        settings.PRESET_LOAD = True
+        for key in settings.PRESET:
+            settings.PRESET[key] = data[key.lower()]
+
 
 class ReturnJson(BaseConfig):
 

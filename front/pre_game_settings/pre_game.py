@@ -1,5 +1,6 @@
 import config.settings.base_settings as settings
-from config.config_manage import check_debug
+import config.settings.json_path as json_path
+from config.config_manage import check_debug, BaseConfig
 
 from front.other.choice import add_choice
 import pygame
@@ -14,19 +15,41 @@ class PreGame():
         check_debug('Pre game init', 'INIT', 1)
         settings.SCREEN.fill((150, 150, 150))
         self.clock = pygame.time.Clock()
+        self.config = BaseConfig()
 
         self.exit_button = None
+        self.preset_buttons = {
+            'size': [],
+            'challenge': [],
+            'folk': [],
+            'environment': []
+        }
 
     @staticmethod
     def pre_game_exit():
         settings.PRE_GAME_LOOP = False
         settings.MENU_LOOP = True
 
+    def load_preset(self):
+        if not settings.PRESET_LOAD:
+            settings.PRESET_DATA = self.config.setting_load(json_path.PRESET_LIST)
+            self.config.set_preset_params(settings.PRESET_DATA)
+        width = 0
+        for key in settings.PRESET:
+            height = 50
+            for el in settings.PRESET[key]:
+                self.preset_buttons[key.lower()].append(Button((100, 100, 100),
+                                  20 + width, 10 + height, 240, 50, el))
+                height += 60
+            width += 260
+
     def update(self):
         self.exit_button = Button((100, 100, 100),
                                   settings.WIDTH - 250, settings.HEIGHT - 60, 240, 50, 'Выйти')
 
+
     def pre_game_loop(self):
+        self.load_preset()
         self.update()
         check_debug('Pre game loop is start', 'BASE', 1)
         while settings.PRE_GAME_LOOP:
@@ -39,8 +62,7 @@ class PreGame():
                         self.pre_game_exit()
                 if ev.type == pygame.MOUSEBUTTONDOWN:
                     if self.exit_button.check(mouse):
-                        if add_choice('Выйти в меню ?', 500):
-                            self.pre_game_exit()
+                        self.pre_game_exit()
                 if ev.type == pygame.MOUSEMOTION:
                     if self.exit_button.check(mouse):self.exit_button.color = (120,120,120)
                     else:
@@ -48,6 +70,9 @@ class PreGame():
 
             settings.SCREEN.fill((150, 150, 150))
             self.exit_button.draw(settings.SCREEN)
+            for key in self.preset_buttons:
+                for button in self.preset_buttons[key]:
+                    button.draw(settings.SCREEN)
 
             pygame.display.update()
             self.clock.tick(settings.FPS)

@@ -20,12 +20,23 @@ FPS = None
 FULLSCREEN = None
 
 
+# preset params
+PRESET_LOAD = False
+PRESET = {
+    'SIZE': None,
+    'CHALLENGE': None,
+    'FOLK': None,
+    'ENVIRONMENT': None
+}
+
+
 # pygame params
 SCREEN = None
 
 
 # data
 WINDOW_DATA = None
+PRESET_DATA = None
 
 
 # console colors
