@@ -30,8 +30,8 @@ class BaseConfig():
 
     @staticmethod
     def setting_dump(url, data):
-        with open(url, 'w') as write:
-            json.dump(data, write)
+        with open(url, 'w', encoding='utf-8') as write:
+            json.dump(data, write, indent=2, ensure_ascii=False)
         check_debug('setting dump', 'SETTING', 1)
 
 # params parse methods
@@ -46,8 +46,12 @@ class BaseConfig():
     @staticmethod
     def set_preset_params(data):
         settings.PRESET_LOAD = True
-        for key in settings.PRESET:
-            settings.PRESET[key] = data[key.lower()]
+        for key in settings.PRESET_LIST:
+            settings.PRESET_LIST[key] = data[key.lower()]
+
+    @staticmethod
+    def update_preset(value, key):
+        settings.PRESET[key] = value
 
 
 class ReturnJson(BaseConfig):

@@ -22,11 +22,17 @@ FULLSCREEN = None
 
 # preset params
 PRESET_LOAD = False
-PRESET = {
+PRESET_LIST = {
     'SIZE': None,
     'CHALLENGE': None,
     'FOLK': None,
     'ENVIRONMENT': None
+}
+PRESET = {
+    "size": None,
+    "challenge": None,
+    "folk": None,
+    "environment": None
 }
 
 
