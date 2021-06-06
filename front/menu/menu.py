@@ -79,6 +79,7 @@ class Menu():
                         self.update()
 
             settings.SCREEN.fill((150,150,150))
+            settings.SCREEN.blit(pygame.image.load("back/data/image/back/menu_back.png"), (0,0))
             self.new_game_button.draw(settings.SCREEN)
             self.exit_button.draw(settings.SCREEN)
             self.setting_button.draw(settings.SCREEN)

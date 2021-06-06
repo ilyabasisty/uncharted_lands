@@ -41,7 +41,7 @@ class PreGame():
                 break
         if result:
             self.config.setting_dump(json_path.PRESET, settings.PRESET)
-            check_debug('Pre game settings saved', 'EVENT', 1)
+            check_debug('Pre game settings saved', 'EVENT')
 
     def load_preset(self):
         if not settings.PRESET_LOAD:
