@@ -65,3 +65,5 @@ __pycache__/
 .venv
 
 .idea
+
+config/json_save/
