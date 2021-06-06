@@ -42,6 +42,8 @@ class PreGame():
         if result:
             self.config.setting_dump(json_path.PRESET, settings.PRESET)
             check_debug('Pre game settings saved', 'EVENT')
+            settings.PRE_GAME_LOOP = False
+            settings.GAME_LOOP = True
 
     def load_preset(self):
         if not settings.PRESET_LOAD:
