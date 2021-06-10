@@ -7,6 +7,7 @@ from front.other.info import add_info
 import pygame
 
 from back.base.button import Button
+from back.base.loop import Loop
 
 
 class Menu():
@@ -22,22 +23,25 @@ class Menu():
         self.exit_button = None
 
         self.info_game_button = None
+
+        self.loop = None
     
-    @staticmethod
-    def menu_exit():
-        settings.MENU_LOOP = False
-        settings.MAIN_LOOP = False
-        check_debug('GAME EXIT !', 'ALERT')
+    def menu_exit(self):
+        if add_choice('Выйти из игры ?', 500):
+            settings.MENU_LOOP = False
+            settings.MAIN_LOOP = False
+            self.loop.stop()
+            check_debug('GAME EXIT !', 'ALERT')
     
-    @staticmethod
-    def to_setting():
+    def to_setting(self):
         settings.SETTINGS_LOOP = True
         settings.MENU_LOOP = False
+        self.loop.stop()
 
-    @staticmethod
-    def to_new_game():
+    def to_new_game(self):
         settings.PRE_GAME_LOOP = True
         settings.MENU_LOOP = False
+        self.loop.stop()
     
     def update(self):
         self.new_game_button = Button((100, 100, 100),
@@ -52,40 +56,22 @@ class Menu():
     def menu_loop(self):
         self.update()
         check_debug('Menu loop is start', 'BASE', 1)
-        while settings.MENU_LOOP:
-            for ev in pygame.event.get():
-                mouse = pygame.mouse.get_pos()
-                if ev.type == pygame.QUIT:
-                    self.menu_exit()
-                if ev.type == pygame.KEYDOWN:
-                    if ev.key == pygame.K_ESCAPE:
-                        self.menu_exit()
-                if ev.type == pygame.MOUSEBUTTONDOWN:
-                    if self.exit_button.check(mouse):
-                        if add_choice('Выйти из игры ?', 500):
-                            self.menu_exit()
-                    if self.setting_button.check(mouse):
-                        self.to_setting()
-                    if self.new_game_button.check(mouse):
-                        self.to_new_game()
-                    if self.info_game_button.check(mouse):
-                        add_info(get_json_text(json_path.MENU_GAME_INFO), 900)
-                if ev.type == pygame.MOUSEMOTION:
-                    if self.exit_button.check(mouse):self.exit_button.color = (120,120,120)
-                    elif self.setting_button.check(mouse):self.setting_button.color = (120,120,120)
-                    elif self.info_game_button.check(mouse):self.info_game_button.color = (120,120,120)
-                    elif self.new_game_button.check(mouse):self.new_game_button.color = (120,120,120)
-                    else:
-                        self.update()
-
-            settings.SCREEN.fill((150,150,150))
-            settings.SCREEN.blit(pygame.image.load("back/data/image/back/menu_back.png"), (0,0))
-            self.new_game_button.draw(settings.SCREEN)
-            self.exit_button.draw(settings.SCREEN)
-            self.setting_button.draw(settings.SCREEN)
-            self.info_game_button.draw(settings.SCREEN)
-            
-            pygame.display.update()
-            self.clock.tick(settings.FPS)
+        self.loop = Loop(
+            loop_name=settings.MENU_LOOP,
+            update=self.update,
+            exit_name="menu_exit",
+            funcs={
+                "menu_exit": self.menu_exit,
+                "to_setting": self.to_setting,
+                "to_new_game": self.to_new_game
+            },
+            buttons={
+                "menu_exit": self.exit_button,
+                "to_setting": self.setting_button,
+                "to_new_game": self.new_game_button
+            },
+            back_img="back/data/image/back/menu_back.png"
+        )
+        self.loop.run()
         
         check_debug('Menu loop is over', 'BASE', 1)
