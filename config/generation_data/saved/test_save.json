@@ -1,0 +1,49 @@
+{
+  "name": "тестовое сохранение",
+  "world_size": "Маленький",
+  "matrix": [
+    [
+      {"vision": false},
+      {"vision": false},
+      {"vision": false}
+    ],
+    [
+      {"vision": false},
+      {"vision": {
+        "type": 1,
+        "id": 1,
+        "open": {"5": 1, "4": 2}
+      }},
+      {"vision": false}
+    ],
+    [
+      {"vision": false},
+      {"vision": false},
+      {"vision": false}
+    ]
+  ],
+  "locals": [
+    {
+      "id": 1,
+      "type": 3,
+      "data": {
+        "terrain": "Речной",
+        "build_point": 5,
+        "builds": ["Хижина рыбака", "Лесопилка"],
+        "people": ["Рыбак:2", "Дровосек:1"],
+        "products": ["Рыба:4:16", "Древесина:2:8", "Мёд:0:0"]
+      }
+    },
+    {
+      "id": 2,
+      "type": 3,
+      "data": {
+        "terrain": "Речной",
+        "build_point": 4,
+        "builds": ["Хижина рыбака"],
+        "people": ["Рыбак:3"],
+        "products": ["Рыба:4:16", "Древесина:0:0", "Мёд:0:0"]
+      }
+    }
+  ]
+}
