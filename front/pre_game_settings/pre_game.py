@@ -7,7 +7,11 @@ import pygame
 import functools
 
 from back.base.button import Button
+<<<<<<< HEAD
 from back.base.loop import Loop
+=======
+import back.generation.world_map as world_map
+>>>>>>> ab6c1253719220e511fad66e2d3e33b1c4775661
 
 
 class PreGame():
@@ -47,7 +51,11 @@ class PreGame():
             check_debug('Pre game settings saved', 'EVENT')
             settings.PRE_GAME_LOOP = False
             settings.GAME_LOOP = True
+<<<<<<< HEAD
             self.loop.stop()
+=======
+            world_map.main_world_generator()
+>>>>>>> ab6c1253719220e511fad66e2d3e33b1c4775661
 
     def load_preset(self):
         if not settings.PRESET_LOAD:
@@ -58,7 +66,7 @@ class PreGame():
             height = 50
             for el in settings.PRESET_LIST[key]:
                 self.preset_buttons[key.lower()].append(Button((100, 100, 100),
-                                  20 + width, 10 + height, 240, 50, el))
+                                  20 + width, 10 + height, 240, 50, el.split(':')[0]))
                 height += 60
             width += 260
     
