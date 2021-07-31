@@ -7,6 +7,7 @@ import pygame
 import functools
 
 from back.base.button import Button
+from back.base.loop import Loop
 
 
 class PreGame():
@@ -27,10 +28,12 @@ class PreGame():
             'environment': []
         }
 
-    @staticmethod
-    def pre_game_exit():
+        self.loop = None
+
+    def pre_game_exit(self):
         settings.PRE_GAME_LOOP = False
         settings.MENU_LOOP = True
+        self.loop.stop()
 
     def pre_game_start(self):
         result = True
@@ -44,6 +47,7 @@ class PreGame():
             check_debug('Pre game settings saved', 'EVENT')
             settings.PRE_GAME_LOOP = False
             settings.GAME_LOOP = True
+            self.loop.stop()
 
     def load_preset(self):
         if not settings.PRESET_LOAD:
@@ -57,6 +61,17 @@ class PreGame():
                                   20 + width, 10 + height, 240, 50, el))
                 height += 60
             width += 260
+    
+    def check_preset(self, mouse):
+        for key in self.preset_buttons:
+            for button in self.preset_buttons[key]:
+                if button.check(mouse):
+                    self.config.update_preset(button.text, key)
+
+    def blit_preset(self):
+        for key in self.preset_buttons:
+            for button in self.preset_buttons[key]:
+                button.draw(settings.SCREEN)
 
     def update(self):
         self.exit_button = Button((100, 100, 100),
@@ -65,40 +80,30 @@ class PreGame():
                                   settings.WIDTH - 250, settings.HEIGHT - 60, 240, 50, 'Начать')
 
     def pre_game_loop(self):
-        self.load_preset()
         self.update()
         check_debug('Pre game loop is start', 'BASE', 1)
-        while settings.PRE_GAME_LOOP:
-            for ev in pygame.event.get():
-                mouse = pygame.mouse.get_pos()
-                if ev.type == pygame.QUIT:
-                    self.pre_game_exit()
-                if ev.type == pygame.KEYDOWN:
-                    if ev.key == pygame.K_ESCAPE:
-                        self.pre_game_exit()
-                if ev.type == pygame.MOUSEBUTTONDOWN:
-                    if self.exit_button.check(mouse):
-                        self.pre_game_exit()
-                    if self.start_button.check(mouse):
-                        self.pre_game_start()
-                    for key in self.preset_buttons:
-                        for button in self.preset_buttons[key]:
-                            if button.check(mouse):
-                                self.config.update_preset(button.text, key)
-                if ev.type == pygame.MOUSEMOTION:
-                    if self.exit_button.check(mouse):self.exit_button.color = (120,120,120)
-                    if self.start_button.check(mouse):self.start_button.color = (120, 120, 120)
-                    else:
-                        self.update()
-
-            settings.SCREEN.fill((150, 150, 150))
-            self.exit_button.draw(settings.SCREEN)
-            self.start_button.draw(settings.SCREEN)
-            for key in self.preset_buttons:
-                for button in self.preset_buttons[key]:
-                    button.draw(settings.SCREEN)
-
-            pygame.display.update()
-            self.clock.tick(settings.FPS)
+        self.loop = Loop(
+            loop_name=settings.PRE_GAME_LOOP,
+            update=self.update,
+            exit_name="pre_game_exit",
+            autorun={
+                "load_preset": self.load_preset,
+            },
+            funcs={
+                "pre_game_exit": self.pre_game_exit,
+                "pre_game_start": self.pre_game_start,
+            },
+            buttons={
+                "pre_game_exit": self.exit_button,
+                "pre_game_start": self.start_button,
+            },
+            mousebuttondown={
+                "check_preset": self.check_preset,
+            },
+            post_for={
+                "blit_preset": self.blit_preset,
+            },
+        )
+        self.loop.run()
 
         check_debug('Pre game loop is over', 'BASE', 1)

@@ -63,12 +63,12 @@ class Menu():
             funcs={
                 "menu_exit": self.menu_exit,
                 "to_setting": self.to_setting,
-                "to_new_game": self.to_new_game
+                "to_new_game": self.to_new_game,
             },
             buttons={
                 "menu_exit": self.exit_button,
                 "to_setting": self.setting_button,
-                "to_new_game": self.new_game_button
+                "to_new_game": self.new_game_button,
             },
             back_img="back/data/image/back/menu_back.png"
         )

@@ -4,6 +4,7 @@ from front.other.choice import add_choice
 import pygame
 
 from back.base.button import Button
+from back.base.loop import Loop
 
 
 class Setting():
@@ -16,11 +17,13 @@ class Setting():
 
         self.back_button = None
         self.fullscreen_button = None    
+
+        self.loop = None
     
-    @staticmethod
-    def to_menu():
+    def to_menu(self):
         settings.MENU_LOOP = True
         settings.SETTINGS_LOOP = False
+        self.loop.stop()
     
     @staticmethod
     def switch_fullscreen():
@@ -30,6 +33,11 @@ class Setting():
             settings.SCREEN = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT), pygame.FULLSCREEN)
         else:
             settings.SCREEN = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT))
+    
+    def set_fullscrean(self):
+        if add_choice('Подтвердить изменения ?', 600):
+            self.switch_fullscreen()
+            self.update()
 
     def update(self):
         self.back_button = Button((100,100,100), settings.WIDTH/2-100, settings.HEIGHT-100, 200, 50, 'Назад')
@@ -38,33 +46,19 @@ class Setting():
     def setting_loop(self):
         self.update()
         check_debug('Setting loop is start', 'BASE', 1)
-        while settings.SETTINGS_LOOP:
-            for ev in pygame.event.get():
-                mouse = pygame.mouse.get_pos()
-                if ev.type == pygame.QUIT:
-                    self.to_menu()
-                if ev.type == pygame.KEYDOWN:
-                    if ev.key == pygame.K_ESCAPE:
-                        self.to_menu()
-                if ev.type == pygame.MOUSEBUTTONDOWN:
-                    if self.back_button.check(mouse):
-                        self.to_menu()
-                    if self.fullscreen_button.check(mouse):
-                        if add_choice('Подтвердить изменения ?', 600):
-                            self.switch_fullscreen()
-                            self.update()
-                if ev.type == pygame.MOUSEMOTION:
-                    if self.back_button.check(mouse):self.back_button.color = (120,120,120)
-                    elif self.fullscreen_button.check(mouse):self.fullscreen_button.color = (120,120,120)
-                    else:
-                        self.update()
-            
-
-            settings.SCREEN.fill((150,150,150))
-            self.back_button.draw(settings.SCREEN)
-            self.fullscreen_button.draw(settings.SCREEN)
-
-            pygame.display.update()
-            self.clock.tick(settings.FPS)
+        self.loop = Loop(
+            loop_name=settings.SETTINGS_LOOP,
+            update=self.update,
+            exit_name="to_menu",
+            funcs={
+                "to_menu": self.to_menu,
+                "set_fullscrean": self.set_fullscrean
+            },
+            buttons={
+                "to_menu": self.back_button,
+                "set_fullscrean": self.fullscreen_button
+            },
+        )
+        self.loop.run()
         
         check_debug('Setting loop is over', 'BASE', 1)
