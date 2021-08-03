@@ -7,6 +7,7 @@ from front.other.info import add_info
 import pygame
 
 from back.base.button import Button
+from back.generation import world_map, local_map
 
 
 class Game():
@@ -32,6 +33,7 @@ class Game():
     def game_loop(self):
         self.update()
         check_debug('Game loop is start', 'BASE', 1)
+        world_map.main_world_generator()
         while settings.GAME_LOOP:
             for ev in pygame.event.get():
                 mouse = pygame.mouse.get_pos()
