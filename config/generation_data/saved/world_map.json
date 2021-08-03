@@ -1,0 +1,94 @@
+{
+  "name": "test",
+  "size": "средний",
+  "challenge": "колонизация",
+  "folk": "люди",
+  "environment": "умеренное",
+  "matrix": [
+    [
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      }
+    ],
+    [
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      }
+    ],
+    [
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": true
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      }
+    ],
+    [
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      }
+    ],
+    [
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      }
+    ]
+  ]
+}
