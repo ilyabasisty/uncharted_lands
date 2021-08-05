@@ -46,6 +46,11 @@ WINDOW_DATA = None
 PRESET_DATA = None
 
 
+#generator
+WORLD_MAP_ID = 1
+WORLD_MAP = None
+
+
 # console colors
 CONS_COLOR = {
     'BASE': '\033[0;37m',

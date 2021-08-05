@@ -1,7 +1,7 @@
 {
   "name": "test",
-  "size": "средний",
-  "challenge": "колонизация",
+  "size": "малый",
+  "challenge": "развитие",
   "folk": "люди",
   "environment": "умеренное",
   "matrix": [
@@ -14,12 +14,6 @@
       },
       {
         "visible": false
-      },
-      {
-        "visible": false
-      },
-      {
-        "visible": false
       }
     ],
     [
@@ -27,59 +21,16 @@
         "visible": false
       },
       {
-        "visible": false
-      },
-      {
-        "visible": false
-      },
-      {
-        "visible": false
-      },
-      {
-        "visible": false
-      }
-    ],
-    [
-      {
-        "visible": false
-      },
-      {
-        "visible": false
-      },
-      {
-        "visible": true
-      },
-      {
-        "visible": false
+        "visible": {
+          "type": 4,
+          "id": 1
+        }
       },
       {
         "visible": false
       }
     ],
     [
-      {
-        "visible": false
-      },
-      {
-        "visible": false
-      },
-      {
-        "visible": false
-      },
-      {
-        "visible": false
-      },
-      {
-        "visible": false
-      }
-    ],
-    [
-      {
-        "visible": false
-      },
-      {
-        "visible": false
-      },
       {
         "visible": false
       },
