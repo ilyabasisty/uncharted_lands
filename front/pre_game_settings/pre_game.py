@@ -48,7 +48,7 @@ class PreGame():
             settings.PRE_GAME_LOOP = False
             settings.GAME_LOOP = True
             self.loop.stop()
-
+# TODO: обработать цикл
 
     def load_preset(self):
         if not settings.PRESET_LOAD:
