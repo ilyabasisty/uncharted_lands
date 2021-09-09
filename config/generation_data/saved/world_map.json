@@ -1,9 +1,9 @@
 {
   "name": "test",
-  "size": "малый",
-  "challenge": "развитие",
+  "size": "большой",
+  "challenge": "колонизация",
   "folk": "люди",
-  "environment": "умеренное",
+  "environment": "горное",
   "matrix": [
     [
       {
@@ -14,23 +14,251 @@
       },
       {
         "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
       }
     ],
     [
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      }
+    ],
+    [
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      }
+    ],
+    [
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      }
+    ],
+    [
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
       {
         "visible": false
       },
       {
         "visible": {
-          "type": 4,
+          "type": 6,
           "id": 1
         }
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
       },
       {
         "visible": false
       }
     ],
     [
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      }
+    ],
+    [
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      }
+    ],
+    [
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      }
+    ],
+    [
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
+      {
+        "visible": false
+      },
       {
         "visible": false
       },
