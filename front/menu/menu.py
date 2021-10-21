@@ -25,23 +25,35 @@ class Menu():
         self.info_game_button = None
 
         self.loop = None
-    
-    def menu_exit(self):
-        if add_choice('Выйти из игры ?', 500):
+
+    def switch_scene(self, scene_key):
+        settings.MENU_LOOP = False
+        settings.SETTINGS_LOOP = False
+        settings.PRE_GAME_LOOP = False
+        settings.GAME_LOOP = False
+        if scene_key == 'Main':
+            settings.MENU_LOOP = True
+        elif scene_key == 'Settings':
+            settings.SETTINGS_LOOP = True
+        elif scene_key == 'PreGame':
+            settings.PRE_GAME_LOOP = True
+        elif scene_key == 'Game':
+            settings.GAME_LOOP = True
+        elif scene_key == 'Exit':
             settings.MENU_LOOP = False
             settings.MAIN_LOOP = False
-            self.loop.stop()
+        self.loop.stop()
+
+    def menu_exit(self):
+        if add_choice('Выйти из игры ?', 500):
+            self.switch_scene('Exit')
             check_debug('GAME EXIT !', 'ALERT')
     
     def to_setting(self):
-        settings.SETTINGS_LOOP = True
-        settings.MENU_LOOP = False
-        self.loop.stop()
+        self.switch_scene('Settings')
 
     def to_new_game(self):
-        settings.PRE_GAME_LOOP = True
-        settings.MENU_LOOP = False
-        self.loop.stop()
+        self.switch_scene('PreGame')
     
     def update(self):
         self.new_game_button = Button((100, 100, 100),
