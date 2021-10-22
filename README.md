@@ -7,6 +7,8 @@
 **[Подробный дизайн документ](design_document/MAIN.md)**
 
 **[Дорожная карта проекта (в разработке)](updates_log/ROADMAP.md)**
+
+**[T R E L L O](https://trello.com/b/Oc5zg2XV/uncharted-lands)**
 ## Обновления
 **Статус:** проектирование\
 **Версия:** 0.0.7
