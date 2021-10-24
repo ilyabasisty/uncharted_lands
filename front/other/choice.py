@@ -3,6 +3,7 @@ from config.config_manage import check_debug
 import pygame
 
 from back.base.button import Button
+from back.base.loop import Loop
 
 
 def add_choice(massage, width=500, height=200, info_link=None):
