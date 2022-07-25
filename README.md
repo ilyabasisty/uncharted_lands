@@ -1,8 +1,9 @@
-# Uncharted lands
+# Uncharted lands ❄️
 ![](back/data/image/system/readme_img_1_L.png)
 ## Описание
 Небольшая разработка пошаговой градостроительной стратегии.
-Подробное описание будет после создания основного каркаса проекта.
+Подробное описание будет после создания основного каркаса проекта.\
+**Следите за новостями на [канале](https://www.youtube.com/channel/UCzpcDUE33SxWP4ydSTx8hJA/featured)**
 
 **[Подробный дизайн документ](design_document/MAIN.md)**
 
@@ -10,7 +11,7 @@
 
 **[T R E L L O](https://trello.com/b/Oc5zg2XV/uncharted-lands)**
 ## Обновления
-**Статус:** проектирование\
+**Статус:** (17.11.2021) Проект временно заморожен в связи с написанием движка на C и работой над Souls Journey\
 **Версия:** 0.0.7
 
 **[Полный список обновлений](updates_log/README.md)**
@@ -96,9 +97,9 @@ pygame
 
 
 ## Контакты
-- [Telegram](https://t.me/snowfox_x)
-- mail: il.nordsky@gmail.com
-- [vk](https://vk.com/ilnord)
+- [Telegram](https://t.me/meowcode)
+- mail: icode@yandex.ru
+- [vk](https://vk.com/meowcode)
 
 ## Лицензия
 [BSD 3-Clause](https://choosealicense.com/licenses/bsd-3-clause/)
