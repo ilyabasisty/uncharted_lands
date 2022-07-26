@@ -97,9 +97,9 @@ pygame
 
 
 ## Контакты
-- [Telegram](https://t.me/meowcode)
+- [Telegram](https://t.me/ilyabasisty)
 - mail: icode@yandex.ru
-- [vk](https://vk.com/meowcode)
+- [vk](https://vk.com/ilyabasisty)
 
 ## Лицензия
 [BSD 3-Clause](https://choosealicense.com/licenses/bsd-3-clause/)
